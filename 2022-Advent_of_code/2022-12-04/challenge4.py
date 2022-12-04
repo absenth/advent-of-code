@@ -5,16 +5,18 @@ def main():
       ar1, ar2 = assignment_range.split(',')
       ar1s, ar1e, ar2s, ar2e = range_builder(ar1, ar2)
       overlaps = overlap_checking(range(ar1s, ar1e), range(ar2s, ar2e))
-      print(overlaps)
+      if overlaps:
+        range_overlaps += 1
+    print(range_overlaps)
 
 
 def range_builder(ar1, ar2):
   ar1_1, ar1_2 = ar1.split('-')
   ar2_1, ar2_2 = ar2.split('-')
   ar1_start = int(ar1_1)
-  ar1_end = int(ar1_2)
+  ar1_end = (int(ar1_2) + 1)
   ar2_start = int(ar2_1)
-  ar2_end = int(ar2_2)
+  ar2_end = (int(ar2_2) + 1)
   return ar1_start, ar1_end, ar2_start, ar2_end
 
 
@@ -25,7 +27,12 @@ def overlap_checking(assignment_range1, assignment_range2):
     return False
   if len(assignment_range1) > 1 and assignment_range1.step % assignment_range2.step:
     return False
-  return assignment_range1.start in assignment_range2 and assignment_range1[-1] in assignment_range2
+  if len(assignment_range2) > 1 and assignment_range2.step % assignment_range1.step:
+    return False
+  if assignment_range1.start in assignment_range2 and assignment_range1[-1] in assignment_range2:
+    return True
+  if assignment_range2.start in assignment_range1 and assignment_range2[-1] in assignment_range1:
+    return True
 
 
 if __name__ == '__main__':
