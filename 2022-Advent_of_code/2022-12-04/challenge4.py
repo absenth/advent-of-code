@@ -9,12 +9,6 @@ def main():
 
 
 def range_builder(ar1, ar2):
-  '''
-  Initial state for each is a string like "2-4"
-  Desired state for each is a range like (2, 4) but we want to include the 4
-  So we need to convert to integer, and increase the second value by 1
-  And finally we should return 'assignment_range1, and assignment_range2'
-  '''
   ar1_1, ar1_2 = ar1.split('-')
   ar2_1, ar2_2 = ar2.split('-')
   ar1_start = int(ar1_1)
@@ -23,7 +17,6 @@ def range_builder(ar1, ar2):
   ar2_end = int(ar2_2)
   return ar1_start, ar1_end, ar2_start, ar2_end
 
-  #print(ar1, ar2)
 
 def overlap_checking(assignment_range1, assignment_range2):
   if not assignment_range1:
