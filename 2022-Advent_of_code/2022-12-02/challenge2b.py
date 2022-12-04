@@ -1,5 +1,3 @@
-
-
 def main():
   '''
     A = Rock | B = Paper | C = Scissors
